@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>浮沉博客</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/index.css">
+	<script src="/static/js/jquery-1.12.4.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/index.js"></script>
+    <script>
+        $(function () {
+            $('.search').click(function () {
+                var msg = $('.form-control').val();
+                $.ajax({
+                    url:'/blog/index/search',
+                    type:'GET',
+                    dataType:'json',
+                    data: {'msg': msg}
+                })
+                .done(function(data){
+                    var datas = data['json_data'];
+                    var str = '';
+                    for (var i = 0; i <datas['titles'].length ; i++) {
+                        str += '<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">\n' +
+                            '                    <div class="thumbnail">\n' +
+                            '                        <a href="/blog/detail/' + data['json_data']['note_id'][i] + '/">\n' +
+                            '                            <img src="' + data['json_data']['img_urls'][i] + '" alt="">' +
+                            '</a>\n' +
+                            '                        <h4>\n' +
+                            '                            <a href="detail.html"><span class="title">' + data['json_data']['titles'][i] + '</span></a>'+
+                            '<div class="tag">\n' +
+                            '                                <span class="glyphicon glyphicon-tags"></span>\n' +
+                            '                                <a href="#"><span>'+ data['json_data']['tag_names'][i] +'</span></a>\n' +
+                            '                            </div>\n' +
+                            '                        </h4>\n' +
+                            '                    </div>\n' +
+                            '                </div>'
+                    }
+
+                    $('.img-container').html(str);
+
+                })
+                .fail(function(){
+                    alert('服务器超时，请重试!');
+                });
+            })
+        })
+    </script>
+</head>
+<body>
+	<!-- 因为一般的导航条是左右顶格的 -->
+	<div class="navbar navbar-inverse navbar-static-top">
+		<div class="container">
+			<!-- 定义logo -->
+			<div class="navbar-header">
+				<!-- data-toggle表示加效果 data-target效果的目标 -->
+				<button class="navbar-toggle" data-toggle="collapse" data-target="#mymenu">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand"><img src="/static/images/logo.png" alt=""></a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="mymenu">
+				<!-- 定义菜单 -->
+				<ul class="nav navbar-nav">
+					<!-- 当前页 -->
+					<li><a href="/blog/index/"><span class="glyphicon glyphicon-home"></span>首页</a></li>
+					<!-- <li class="dropdown">
+						<a id="drop" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<span class="glyphicon glyphicon-bookmark"></span>分类<span class="caret"></span>
+						</a>
+						<ul id="menu1" class="dropdown-menu" aria-labelledby="drop">
+							<li>前端</li>
+							<li>后端</li>
+							<li>网络</li>
+						</ul>
+					</li> -->
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span>关于我</a></li>
+				</ul>
+
+				<!-- 定义菜单里面的表单 -->
+				<div class="navbar-form navbar-right">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="请输入文章题目的关键字">
+							<span class="input-group-btn">
+								<button class="btn btn-default search"><span class="glyphicon glyphicon-search"></span></button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<h1 class="title text-center"><strong>前后端开发笔记</strong></h1>
+				<p class="introduce text-center">一个在校大三学生，终身学习者。</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container tag-container">
+		<div class="row">
+			<h2 class="tag-title text-center"><strong>标签栏</strong></h2>
+			<div class="wrapper">
+                {% for tag in tags %}
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><a href="/blog/tag_detail/{{ tag.id }}/">{{ tag.name }}</a></div>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<div class="container img-container">
+		<div class="row img-row">
+            {% for note in notes %}
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <a href="/blog/detail/{{ note.id }}">
+                            <img src="{{ note.tag.img_url }}" alt="">
+                        </a>
+                        <h4>
+                            <a href="/blog/detail/{{ note.id }}"><span class="title">{{ note.title }}</span></a>
+                            <div class="tag">
+                                <span class="glyphicon glyphicon-tags"></span>
+                                <a href="/blog/tag_detail/{{ note.tag.id }}/"><span>{{ note.tag.name }}</span></a>
+                            </div>
+                        </h4>
+                    </div>
+                </div>
+            {% endfor %}
+		</div>
+	</div>
+	<div class="totop">👆</div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<p>Copyright © All Rights Reserved.</p>
+		        <p>Tel:151...471 山西ICP备****号</p>  
+			</div>
+		</div>
+	</div>
+</body>
+</html>

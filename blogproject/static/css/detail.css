@@ -1,0 +1,97 @@
+.jumbotron{
+	margin-bottom: 0;
+}
+
+.article-container{
+	height: 520px;
+	margin-top: 30px;
+}
+
+.note{
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #eee;
+}
+
+.catalog{
+	background-color: #fff;
+	border: 1px solid #eee;
+}
+
+.catalog ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.catalog ul li{
+	text-align: center;
+	height: 32px;
+	line-height: 32px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #333;
+
+}
+
+/*.catalog ul li:first-child{*/
+/*	background-color: cyan;*/
+/*}*/
+
+.catalog ul li:hover{
+	cursor: pointer;
+	color: #54a3ff;
+}
+
+
+@media (max-width: 992px) {
+	.catalog{
+		display: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.catalog{
+		display: none;
+	}
+}
+
+.active{
+	background-color: cyan;
+}
+
+.comment-container .col-lg-8{
+	padding-left: 0;
+	padding-right: 0;
+}
+.comment-container .col-lg-1{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.comment-container .btn-default{
+	height: 75px;
+	width: 100%;
+}
+
+.comment li{
+	margin-top: 10px;
+	display: block;
+	border-bottom: 1px dotted #666;
+}
+
+.comment li span{
+	margin-right: 30px;
+	font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+

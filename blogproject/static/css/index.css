@@ -1,0 +1,113 @@
+.navbar-brand{
+	padding: 6px 15px;
+}
+
+.glyphicon{
+	margin-right: 5px;
+}
+
+.navbar{
+	margin-bottom: 0;
+}
+
+.title{
+	margin-top: 100px;
+	margin-bottom: 30px;
+}
+
+.jumbotron p{
+	margin-bottom: 100px;
+}
+
+.tag-container{
+	background-color: #fff;
+	margin-top: -55px;
+	box-shadow: 0 8px 10px #6666665c;
+}
+
+.wrapper{
+	margin-top: 30px;
+}
+
+.tag-container .col-lg-2 a{
+	display: block;
+	width: 120px;
+	height: 40px;
+	background-color: #eee;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 10px;
+	font-size: 16px;
+	text-decoration: none;
+	color: #000;
+	margin-bottom: 20px;
+}
+
+.tag-container .col-lg-2 a:hover{
+	background-color: #666;
+	color: #fff;
+}
+
+.dropdown-menu{
+	min-width: 50px;
+	width: 100px;
+	left: -6px;
+	text-align: center;
+}
+
+.dropdown-menu li:hover{
+	cursor: pointer;
+	background-color: #666;
+	color: #fff;
+}
+
+
+.img-container{
+	margin-top: 30px;
+} 
+
+
+.thumbnail .tag{
+	float: right;
+}
+
+.thumbnail .title{
+	margin-left: 5px;
+}
+
+.thumbnail .tag{
+	margin-right: 5px;
+}
+
+.thumbnail a{
+	text-decoration: none;
+	color: #000;
+}
+
+.thumbnail a:hover{
+	color: #13cf75ad;
+}
+
+.totop{
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	font-size: 40px;
+	position: fixed;
+	right: 20px;
+	bottom: 60px;
+	border-radius: 50%;
+	background-color: #64ffbd;
+	color: #fff;
+	cursor: pointer;
+	z-index: 9999;
+	display: none;
+}
+
+.footer{
+	padding-top: 10px;
+	margin-top: 30px;
+	background-color: #eee;
+	text-align: center;
+}
